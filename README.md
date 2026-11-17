@@ -29,18 +29,18 @@ web tier in private subnets, and a private RDS database.
 IAM policy limited to /webapp/db/* parameters, IMDSv2 only.)
 
 ## Proof it works
-(docs/Screenshots/01-VPC Resource Map.png)
-(docs/Screenshots/02-alb-sg.png)
-(docs/Screenshots/03-app-sg.png)
-(docs/Screenshots/04-db-sg.png)
-(docs/Screenshots/05-iam-role-poilcy.png)
-(docs/Screenshots/06-rds-private.png)
-(docs/Screenshots/07-target-groups-health-checks.png)
-(docs/Screenshots/08-webapp-working.png)
-(docs/Screenshots/09-webapp-other-server.png)
-(docs/Screenshots/10-AutoScalingGroup-Activity.png)
-(docs/Screenshots/11-CloudWatch-Alarm.png)
-(docs/Screenshots/12-CloudWatch-normal.png)
+![](docs/Screenshots/01-VPC Resource Map.png)
+![](docs/Screenshots/02-alb-sg.png)
+![](docs/Screenshots/03-app-sg.png)
+![](docs/Screenshots/04-db-sg.png)
+![](docs/Screenshots/05-iam-role-poilcy.png)
+![](docs/Screenshots/06-rds-private.png)
+![](docs/Screenshots/07-target-groups-health-checks.png)
+![](docs/Screenshots/08-webapp-working.png)
+![](docs/Screenshots/09-webapp-other-server.png)
+![](docs/Screenshots/10-AutoScalingGroup-Activity.png)
+![](docs/Screenshots/11-CloudWatch-Alarm.png)
+![](docs/Screenshots/12-CloudWatch-normal.png)
 
 ## Resilience test
 Terminated an instance, the site stayed up, ASG launched a replacement.
