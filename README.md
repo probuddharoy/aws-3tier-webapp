@@ -11,14 +11,14 @@ web tier in private subnets, and a private RDS database.
 ![Architecture](docs/architecture.png)
 
 ## What's in it
-- Custom VPC, 2 AZs, public / private app / private DB subnets
+- Custom VPC, 2 Availability Zones, public / private app / private DB subnets
 - ALB in public subnets, EC2 in an Auto Scaling group in private subnets
 - RDS MySQL in private DB subnets (no public access)
 - NAT gateway for outbound-only internet access
 - IAM role + Parameter Store (no credentials in code)
 - CloudWatch alarms
 
-## Security decisions
+## Security Group Configuration
 | Security group | Allows | From |
 |---|---|---|
 | alb-sg | HTTP 80 | Internet |
@@ -59,7 +59,7 @@ IAM policy limited to /webapp/db/* parameters, IMDSv2 only.)
 -It also stopped the alarm and went back to normal once the webapp was started again
 
 ## Resilience test
-Terminated an instance, the site stayed up, ASG launched a replacement.
+As we could see from the Auto Scaling Group Screenshot , It automatically started a new instance once the old one went down
 
 ## Cost notes and trade-offs
 - One NAT gateway (single point of failure, chosen for cost)
