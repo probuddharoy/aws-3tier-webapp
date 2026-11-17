@@ -29,7 +29,7 @@ web tier in private subnets, and a private RDS database.
 IAM policy limited to /webapp/db/* parameters, IMDSv2 only.)
 
 ## Proof it works
-![](docs/Screenshots/01-VPC Resource Map.png)
+![](docs/Screenshots/01-VPC-Resource-Map.png)
 ![](docs/Screenshots/02-alb-sg.png)
 ![](docs/Screenshots/03-app-sg.png)
 ![](docs/Screenshots/04-db-sg.png)
