@@ -31,7 +31,7 @@ IAM policy limited to /webapp/db/* parameters, IMDSv2 only.)
 ## Proof it works
 ## The VPC Resource Map
 ![The VPC Resource Map](docs/Screenshots/01-VPC-Resource-Map.png)
--This shows the first step in the deployment where a VPC is created with 6 subnets and 3 security groups
+-This shows the first step in the deployment where a VPC is created with 6 subnets and 3 route tables
 ## Security Group Configuration 
 ![Application Load Balancer Security](docs/Screenshots/02-alb-sg.png)
 ![Application Security Group](docs/Screenshots/03-app-sg.png)
