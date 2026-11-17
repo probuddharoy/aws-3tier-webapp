@@ -29,18 +29,34 @@ web tier in private subnets, and a private RDS database.
 IAM policy limited to /webapp/db/* parameters, IMDSv2 only.)
 
 ## Proof it works
-![](docs/Screenshots/01-VPC-Resource-Map.png)
-![](docs/Screenshots/02-alb-sg.png)
-![](docs/Screenshots/03-app-sg.png)
-![](docs/Screenshots/04-db-sg.png)
-![](docs/Screenshots/05-iam-role-poilcy.png)
-![](docs/Screenshots/06-rds-private.png)
-![](docs/Screenshots/07-target-groups-health-checks.png)
-![](docs/Screenshots/08-webapp-working.png)
+![The VPC Resource Map](docs/Screenshots/01-VPC-Resource-Map.png)
+-This shows the first step in the deployment where a VPC is created with 6 subnets and 3 security groups
+![Application Load Balancer](docs/Screenshots/02-alb-sg.png)
+![Application Security Group](docs/Screenshots/03-app-sg.png)
+![Database Security Group](docs/Screenshots/04-db-sg.png)
+-The 3 security Groups are created for the services
+-Application Security Group is for EC2 instances
+-The other 2 are for their respective services
+![IAM Policy](docs/Screenshots/05-iam-role-poilcy.png)
+-IAM(Identity and Access Management) Role Policy is created
+-AmazonSSMManagedInstanceCore lets us use the Session Manager to directly login to the EC2 instance
+-the other is used to let us read the secret password in Parameter Store and the host Endpoint
+![RDS MySQL Private Database](docs/Screenshots/06-rds-private.png)
+-The Relational Database Instance is created for MySQL to store the data that will be inserted in the notes web app
+![Target Group Health Checks](docs/Screenshots/07-target-groups-health-checks.png)
+-Load Balancer and Target Groups are created and the Auto Scaling group is started
+-Here we can see that both the instances started and are healthy
+![WebApp](docs/Screenshots/08-webapp-working.png)
 ![](docs/Screenshots/09-webapp-other-server.png)
-![](docs/Screenshots/10-AutoScalingGroup-Activity.png)
-![](docs/Screenshots/11-CloudWatch-Alarm.png)
+-We use the VPC link to go to the webapp and insert a few entries
+-If we reload the page we can see the other server as well
+-The other instance starts functioning alone if one of the instances is terminated
+![Auto Scaling Group](docs/Screenshots/10-AutoScalingGroup-Activity.png)
+-We can see that the auto scaling group starts a new instance automatically, since one of the instances was shut down
+![Cloud Watch Checks](docs/Screenshots/11-CloudWatch-Alarm.png)
 ![](docs/Screenshots/12-CloudWatch-normal.png)
+-Here the Cloud Watch service is working as intended as , when I stopped the webapp in one of the instances it started the alarm.
+-It also stopped the alarm and went back to normal once the webapp was started again
 
 ## Resilience test
 Terminated an instance, the site stayed up, ASG launched a replacement.
